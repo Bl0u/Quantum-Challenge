@@ -2,7 +2,6 @@ package entity.product_children;
 
 import entity.ProductEntity;
 import interfaces.Shippable;
-import interfaces.ShippingService;
 
 public class TVEntity extends ProductEntity implements Shippable, ShippingService {
     private final double weight;

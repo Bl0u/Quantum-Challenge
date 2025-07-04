@@ -57,8 +57,6 @@ public class CustomerEntity {
             throw new RuntimeException("Customer's balance is not sufficient!");
     }
 
-    //other customer's functions
-
     @Override
     public String toString() {
         return name + " | Balance: $" + String.format("%.2f", balance);

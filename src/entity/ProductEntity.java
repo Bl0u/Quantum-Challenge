@@ -10,8 +10,8 @@ public abstract class ProductEntity {
 
     public ProductEntity(String name, double price, int quantity) {
         this.name = name;
-        setPrice(price);  // Use setter for validation
-        setQuantity(quantity);  // Use setter for validation
+        setPrice(price);
+        setQuantity(quantity);
     }
 
     public abstract void displayDetails();

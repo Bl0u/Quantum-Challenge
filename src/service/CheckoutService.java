@@ -4,7 +4,6 @@ import entity.CartEntity;
 import entity.CustomerEntity;
 import entity.ProductEntity;
 import interfaces.Shippable;
-import interfaces.ShippingService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ public class CheckoutService {
             throw new RuntimeException("The cart is empty, can't proceed to checkout!");
 
 
-        List<ShippingService> shippableItems = new ArrayList<>();
+        List<Shippable> shippableItems = new ArrayList<>();
         Map<ProductEntity, Integer> items = cartEntity.getItems();
 
         String receiptShipmentNoticeSection = "** Shipment notice **\n";
@@ -39,10 +38,10 @@ public class CheckoutService {
 
         for(ProductEntity product: items.keySet()){
             currentQuantity = items.get(product);
-            if (product instanceof ShippingService){
-                shippableItems.add((ShippingService) product);
+            if (product instanceof Shippable){
+                shippableItems.add((Shippable) product);
                 receiptShipmentNoticeSection += currentQuantity + "x " + product.getName();
-                currentWeightGrams = currentQuantity * ((ShippingService) product).getWeight();
+                currentWeightGrams = currentQuantity * ((Shippable) product).getWeight();
                 receiptShipmentNoticeSection += "\t\t\t";
                 if (currentWeightGrams < 1000)
                     receiptShipmentNoticeSection += String.format("%.1f", currentWeightGrams) + "gm";
@@ -50,7 +49,7 @@ public class CheckoutService {
                     receiptShipmentNoticeSection += String.format("%.1f", (currentWeightGrams / 1000)) + "kg";
                 receiptShipmentNoticeSection += "\n";
                 shippingFees += ((Shippable) product).getShippingFees();
-                totalWeight += ((ShippingService) product).getWeight();
+                totalWeight += ((Shippable) product).getWeight();
             }
             currentPrice = currentQuantity * product.getPrice();
             receiptCheckoutReceiptSection += currentQuantity + "x " + product.getName() + "\t\t\t" + currentPrice;

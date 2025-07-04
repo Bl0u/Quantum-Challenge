@@ -3,7 +3,6 @@ package entity.product_children;
 import entity.ProductEntity;
 import interfaces.Expirable;
 import interfaces.Shippable;
-import interfaces.ShippingService;
 
 import java.time.LocalDate;
 
