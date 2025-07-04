@@ -6,7 +6,7 @@ import interfaces.Shippable;
 
 import java.time.LocalDate;
 
-public class CheeseEntity extends ProductEntity implements Expirable, Shippable, ShippingService {
+public class CheeseEntity extends ProductEntity implements Expirable, Shippable {
     private final LocalDate expiryDate;
     private final double weight;
     private double shippingFees;
