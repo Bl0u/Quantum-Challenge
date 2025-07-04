@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        SystemTester.createProduct();
+//        SystemTester.createProduct();
 
         // Critical Edge Cases
 //        SystemTester.testUserWithEnoughBalance();
@@ -21,7 +21,7 @@ public class Main {
 //        SystemTester.testUserWithoutEnoughBalance();
 //        SystemTester.testProductIsOutOfStock();
 //        SystemTester.testAddExpiredProductToCart();
-//        SystemTester.DefaultTestCase();
+        SystemTester.DefaultTestCase();
     }
 
     public static class SystemTester{
