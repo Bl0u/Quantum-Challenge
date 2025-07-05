@@ -15,13 +15,14 @@ public class Main {
         // Critical Edge Cases
 //        SystemTester.testUserWithEnoughBalance();
 //        SystemTester.testCartAccomulation();
+//        SystemTester.testTotalWeightInGrams();
 
         // Main Test Cases
 //        SystemTester.testCartEmpty();
 //        SystemTester.testUserWithoutEnoughBalance();
 //        SystemTester.testProductIsOutOfStock();
 //        SystemTester.testAddExpiredProductToCart();
-        SystemTester.DefaultTestCase();
+//        SystemTester.DefaultTestCase();
     }
 
     public static class SystemTester{
@@ -116,6 +117,23 @@ public class Main {
 
             CartEntity cart = new CartEntity() ;
             CustomerEntity customer = new CustomerEntity(1L, "Peter", "peter@gmail.com", "Dummy st. cairo", 5000) ;
+
+            CheckoutService checkoutService = new CheckoutService() ;
+            String receipt = checkoutService.checkOutReceipt(customer, cart) ;
+            System.out.println(receipt);
+        }
+        public static void testTotalWeightInGrams(){
+            ProductEntity cheese = new CheeseEntity("Cheddar Cheese", 10.0, 5, LocalDate.of(2025, 7, 15), 150, 10);
+            ProductEntity paramigiano = new CheeseEntity("Paramigiano", 19.99, 10, LocalDate.of(2026, 7, 15), 150, 10);
+            ProductEntity tv = new TVEntity("Samsung TV", 500.0, 2, 100, 30);
+            ProductEntity card = new MobileScratchCardEntity("Scratch Card", 5.0, 100);
+
+            CartEntity cart = new CartEntity() ;
+            cart.add(cheese, 2) ;
+            cart.add(tv, 2) ;
+            cart.add(card, 5) ;
+
+            CustomerEntity customer = new CustomerEntity(1L, "Peter", "peter@gmail.com", "Dummy st. cairo", 1085.01) ;
 
             CheckoutService checkoutService = new CheckoutService() ;
             String receipt = checkoutService.checkOutReceipt(customer, cart) ;
