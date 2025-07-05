@@ -49,7 +49,8 @@ public class CheckoutService {
                     receiptShipmentNoticeSection += String.format("%.1f", (currentWeightGrams / 1000)) + "kg";
                 receiptShipmentNoticeSection += "\n";
                 shippingFees += ((Shippable) product).getShippingFees();
-                totalWeight += ((Shippable) product).getWeight();
+//                totalWeight += (((Shippable) product).getWeight());
+                totalWeight += currentWeightGrams;
             }
             currentPrice = currentQuantity * product.getPrice();
             receiptCheckoutReceiptSection += currentQuantity + "x " + product.getName() + "\t\t\t" + currentPrice;
